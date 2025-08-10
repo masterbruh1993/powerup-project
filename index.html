@@ -1,121 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>1Up Trade</title>
-  <style>
-    body {
-      margin:0;
-      font-family:Arial, sans-serif;
-      color:#fff;
-      text-align:center;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:flex-start;
-      min-height:100vh;
-      background:url('bg.jpg') no-repeat center center/cover;
-      padding:20px 10px;
-      box-sizing:border-box;
-    }
-    h1 {
-      font-size:3rem;
-      margin:0 0 10px;
-      text-shadow:2px 2px 5px #000;
-    }
-    p.lead {
-      font-size:1.2rem;
-      margin:0 0 18px;
-      text-shadow:1px 1px 3px #000;
-    }
-    /* BLUE CTA BUTTON */
-    a.button {
-      display:inline-block;
-      padding:14px 28px;
-      border-radius:10px;
-      background:linear-gradient(45deg,#0088cc,#00aaff);
-      color:#fff;
-      font-weight:bold;
-      text-decoration:none;
-      font-size:1.1rem;
-      box-shadow:0 4px 15px rgba(0,136,204,.5);
-      transition:transform .2s ease, box-shadow .2s ease;
-      margin:20px 0 30px;
-    }
-    a.button:hover {
-      transform:scale(1.06);
-      box-shadow:0 6px 22px rgba(0,136,204,.8);
-    }
-    /* FEATURES BLOCK */
-    .features {
-      max-width:720px;
-      width:92%;
-      margin:16px auto 18px;
-      text-align:left;
-      background:rgba(0,0,0,.48);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:12px;
-      padding:16px 18px;
-      backdrop-filter:blur(4px);
-    }
-    .features h2 {
-      margin:0 0 8px;
-      font-size:1.4rem;
-    }
-    .features p {
-      margin:10px 0;
-      line-height:1.45;
-    }
-    .bullets {
-      margin:10px 0;
-      padding-left:0;
-      list-style:none;
-    }
-    .bullets li {
-      margin:8px 0;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-    }
-    .emoji {
-      width:24px;
-      display:inline-block;
-      text-align:center;
-    }
-    footer {
-      font-size:.9rem;
-      color:#ddd;
-      text-shadow:1px 1px 3px #000;
-      margin-top:auto;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1Up Trade — Level Up Your Trading Game</title>
+<meta name="description" content="Elite trading signals, daily payouts, and high referral rewards. Join 1Up Trade on Telegram.">
+<style>
+  :root{
+    --bg:#0b0f17; --text:#eaf0ff; --muted:#b5c0d6; --card:rgba(9,13,20,.55);
+    --stroke:rgba(255,255,255,.12); --accent:#0aa3ff; --accent2:#0d8ad8; --gold:#ffd86b;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text);
+    background: var(--bg) url('./bg.jpg') center/cover fixed no-repeat;
+  }
+  .overlay{position:fixed; inset:0; background:linear-gradient(180deg, rgba(7,10,16,.65), rgba(7,10,16,.80));}
+  .container{position:relative; max-width:1100px; margin:0 auto; padding:20px 18px 60px}
+
+  /* Sections */
+  section{margin:38px 0}
+  .card{background:var(--card); border:1px solid var(--stroke); border-radius:18px; backdrop-filter:blur(6px);}
+
+  /* HERO */
+  .hero{display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px; padding-top:18px}
+  .hero h1{font-size:clamp(32px,6vw,56px); margin:8px 0 0; letter-spacing:.5px}
+  .hero p{color:var(--muted); font-size:clamp(15px,2.9vw,18px); margin:4px 0 0}
+  .cta{
+    display:inline-block; margin-top:14px; padding:14px 22px; border-radius:12px;
+    background:linear-gradient(45deg, var(--accent), var(--accent2)); color:#fff; font-weight:800; text-decoration:none;
+    box-shadow:0 10px 28px rgba(10,163,255,.35); transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .cta:hover{transform:translateY(-2px); box-shadow:0 14px 36px rgba(10,163,255,.48)}
+
+  /* BENEFITS */
+  .benefits{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
+  .benefit{padding:18px; display:grid; gap:6px}
+  .benefit .ico{font-size:22px}
+  .benefit h3{margin:2px 0; font-size:18px}
+  .benefit p{margin:0; color:var(--muted); font-size:14px; line-height:1.45}
+
+  /* TESTIMONIALS */
+  .t-wrap{padding:18px}
+  .t-head{display:flex; align-items:center; justify-content:space-between; margin:0 0 8px}
+  .t-head h2{margin:0; font-size:20px}
+  .t-carousel{position:relative; overflow:hidden}
+  .t-track{display:flex; transition:transform .5s ease}
+  .t{min-width:100%; padding:14px; display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:center}
+  .avatar{width:44px; height:44px; border-radius:50%; background:#223; display:grid; place-items:center; font-weight:700}
+  .t blockquote{margin:0; color:var(--text); line-height:1.45}
+  .t cite{display:block; color:var(--muted); font-style:normal; margin-top:6px}
+
+  .dots{display:flex; gap:6px; justify-content:center; margin-top:10px}
+  .dot{width:8px;height:8px;border-radius:50%;background:#5e6b82;opacity:.6}
+  .dot.active{background:#cfe6ff; opacity:1}
+
+  /* FOMO */
+  .fomo{padding:22px; text-align:center}
+  .fomo h3{margin:0 0 6px; font-size:20px}
+  .fomo p{margin:0; color:var(--muted)}
+  .count{margin:10px auto 14px; display:flex; gap:8px; justify-content:center}
+  .pill{min-width:54px; padding:8px 10px; background:rgba(255,216,107,.1); border:1px solid rgba(255,216,107,.25); color:var(--gold); border-radius:10px; font-weight:800}
+
+  /* Footer */
+  footer{color:#9fb0c7; text-align:center; font-size:12px; margin:24px 0}
+
+  /* Responsive */
+  @media (max-width:900px){ .benefits{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:640px){
+    .benefits{grid-template-columns:1fr}
+    .t{grid-template-columns:1fr; text-align:center}
+    .avatar{margin:0 auto}
+  }
+</style>
 </head>
 <body>
-  <h1>1Up Trade</h1>
-  <p class="lead">Level Up Your Trading Game – Join Us Now!</p>
+<div class="overlay"></div>
+<div class="container">
 
-  <div class="features">
-    <h2>💹 1Up Trade</h2>
-    <p>Lagi ka bang nahuhuli sa galaw ng market?<br/>O minsan, pasok ka sa trade tapos mali pala timing?</p>
+  <!-- HERO -->
+  <section class="hero">
+    <a href="https://t.me/Official1Uptrade" class="cta">OPEN TELEGRAM</a>
+    <h1>1Up Trade</h1>
+    <p>Elite trading signals, daily payouts, and high referral rewards.</p>
+  </section>
 
-    <p>Dito sa <strong>1Up Trade</strong>, tutulungan ka naming mauna at kumita nang tuloy-tuloy:</p>
+  <!-- BENEFITS -->
+  <section class="card">
+    <div class="benefits">
+      <div class="benefit">
+        <div class="ico">📊</div>
+        <h3>Elite trading signals</h3>
+        <p>Mataas ang accuracy — curated setups at tested strategies.</p>
+      </div>
+      <div class="benefit">
+        <div class="ico">🎯</div>
+        <h3>Smart entry & exit</h3>
+        <p>Maximize profit, minimize risk with clear if/then plans.</p>
+      </div>
+      <div class="benefit">
+        <div class="ico">📡</div>
+        <h3>Real-time updates</h3>
+        <p>Always one step ahead with live market reads from pros.</p>
+      </div>
+      <div class="benefit">
+        <div class="ico">💰</div>
+        <h3>Real source of income</h3>
+        <p>Legit at tuloy-tuloy — grow with the team’s edge.</p>
+      </div>
+      <div class="benefit">
+        <div class="ico">📆</div>
+        <h3>Daily payout</h3>
+        <p>Diretso sa GCash wallet mo. No waiting, no hassle.</p>
+      </div>
+      <div class="benefit">
+        <div class="ico">🤝</div>
+        <h3>50% commission</h3>
+        <p>High rewards kada successful referral — scale your earnings.</p>
+      </div>
+    </div>
+  </section>
 
-    <ul class="bullets">
-      <li><span class="emoji">📊</span><span><strong>Elite trading signals</strong> na mataas ang accuracy</span></li>
-      <li><span class="emoji">🎯</span><span><strong>Tamang entry at exit points</strong> para sa maximum kita</span></li>
-      <li><span class="emoji">📡</span><span><strong>Real-time market updates</strong> mula sa mga batikang traders</span></li>
-    </ul>
+  <!-- TESTIMONIALS -->
+  <section class="card t-wrap">
+    <div class="t-head">
+      <h2>What members are saying</h2>
+    </div>
+    <div class="t-carousel" aria-live="polite">
+      <div class="t-track" id="tTrack">
+        <div class="t">
+          <div class="avatar">M</div>
+          <div>
+            <blockquote>“Naka-withdraw ako 3x this week. Solid yung signals at may klarong levels.”</blockquote>
+            <cite>— Mark D.</cite>
+          </div>
+        </div>
+        <div class="t">
+          <div class="avatar">J</div>
+          <div>
+            <blockquote>“Daily payout is real. First time kong maka-experience na ganito ka-smooth.”</blockquote>
+            <cite>— Jenny R.</cite>
+          </div>
+        </div>
+        <div class="t">
+          <div class="avatar">C</div>
+          <div>
+            <blockquote>“Nag 3× yung puhunan ko in one month. May logic at discipline yung playbook.”</blockquote>
+            <cite>— Carlo M.</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dots" id="dots"></div>
+  </section>
 
-    <p>💰 <strong>Real source of income</strong>, legit at tuloy-tuloy<br/>
-       📆 <strong>Daily payout</strong> diretso sa GCash wallet mo<br/>
-       🎯 <strong>High Rewards – 50% commission</strong> kada successful referral</p>
-
-    <p><strong>✅ Become part of our team and start earning!</strong></p>
-  </div>
-
-  <a href="https://t.me/Official1Uptrade" target="_blank" class="button">OPEN TELEGRAM</a>
+  <!-- FOMO CTA -->
+  <section class="card fomo">
+    <h3>Spots for new members are limited this week</h3>
+    <p>Join now and start earning within 24 hours.</p>
+    <div class="count" id="count">
+      <div class="pill" id="d">00d</div>
+      <div class="pill" id="h">00h</div>
+      <div class="pill" id="m">00m</div>
+      <div class="pill" id="s">00s</div>
+    </div>
+    <a href="https://t.me/Official1Uptrade" class="cta">✅ JOIN THE WINNING TEAM NOW</a>
+  </section>
 
   <footer>© 2025 1Up Trade. All rights reserved.</footer>
+</div>
+
+<script>
+  // Simple testimonial slider
+  const track = document.getElementById('tTrack');
+  const slides = Array.from(track.children);
+  const dotsBox = document.getElementById('dots');
+  let idx = 0;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i===0 ? ' active' : '');
+    d.addEventListener('click', () => go(i));
+    dotsBox.appendChild(d);
+  });
+  const dots = Array.from(dotsBox.children);
+
+  function go(i){
+    idx = (i+slides.length)%slides.length;
+    track.style.transform = `translateX(-${idx*100}%)`;
+    dots.forEach((d,k)=>d.classList.toggle('active', k===idx));
+  }
+  setInterval(()=>go(idx+1), 4500);
+
+  // Optional countdown to next reset (e.g., 48h from now)
+  const target = new Date(Date.now() + 48*60*60*1000);
+  const dE = id => document.getElementById(id);
+  function tick(){
+    const diff = target - new Date();
+    const t = Math.max(0, Math.floor(diff/1000));
+    const d = Math.floor(t/86400), h = Math.floor(t%86400/3600), m = Math.floor(t%3600/60), s = t%60;
+    dE('d').textContent = `${String(d).padStart(2,'0')}d`;
+    dE('h').textContent = `${String(h).padStart(2,'0')}h`;
+    dE('m').textContent = `${String(m).padStart(2,'0')}m`;
+    dE('s').textContent = `${String(s).padStart(2,'0')}s`;
+  }
+  tick(); setInterval(tick, 1000);
+</script>
 </body>
 </html>
