@@ -5,35 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>1Up Trade</title>
   <style>
-    body{
-      margin:0; font-family:Arial, sans-serif; color:#fff; text-align:center;
-      display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh;
+    body {
+      margin:0;
+      font-family:Arial, sans-serif;
+      color:#fff;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      min-height:100vh;
       background:url('bg.jpg') no-repeat center center/cover;
+      padding:20px 10px;
+      box-sizing:border-box;
     }
-    h1{ font-size:3rem; margin:0 0 10px; text-shadow:2px 2px 5px #000; }
-    p.lead{ font-size:1.2rem; margin:0 0 18px; text-shadow:1px 1px 3px #000; }
-
+    h1 {
+      font-size:3rem;
+      margin:0 0 10px;
+      text-shadow:2px 2px 5px #000;
+    }
+    p.lead {
+      font-size:1.2rem;
+      margin:0 0 18px;
+      text-shadow:1px 1px 3px #000;
+    }
     /* BLUE CTA BUTTON */
-    a.button{
-      display:inline-block; padding:14px 28px; border-radius:10px;
-      background:linear-gradient(45deg,#0088cc,#00aaff); color:#fff; font-weight:bold;
-      text-decoration:none; font-size:1.1rem; box-shadow:0 4px 15px rgba(0,136,204,.5);
+    a.button {
+      display:inline-block;
+      padding:14px 28px;
+      border-radius:10px;
+      background:linear-gradient(45deg,#0088cc,#00aaff);
+      color:#fff;
+      font-weight:bold;
+      text-decoration:none;
+      font-size:1.1rem;
+      box-shadow:0 4px 15px rgba(0,136,204,.5);
       transition:transform .2s ease, box-shadow .2s ease;
+      margin:20px 0 30px;
     }
-    a.button:hover{ transform:scale(1.06); box-shadow:0 6px 22px rgba(0,136,204,.8); }
-
+    a.button:hover {
+      transform:scale(1.06);
+      box-shadow:0 6px 22px rgba(0,136,204,.8);
+    }
     /* FEATURES BLOCK */
-    .features{
-      max-width:720px; width:92%; margin:16px auto 18px; text-align:left;
-      background:rgba(0,0,0,.48); border:1px solid rgba(255,255,255,.12);
-      border-radius:12px; padding:16px 18px; backdrop-filter:blur(4px);
+    .features {
+      max-width:720px;
+      width:92%;
+      margin:16px auto 18px;
+      text-align:left;
+      background:rgba(0,0,0,.48);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      padding:16px 18px;
+      backdrop-filter:blur(4px);
     }
-    .features h2{ margin:0 0 8px; font-size:1.4rem }
-    .features p{ margin:10px 0; line-height:1.45 }
-    .bullets{ margin:10px 0; padding-left:0; list-style:none }
-    .bullets li{ margin:8px 0; display:flex; gap:10px; align-items:flex-start }
-    .emoji{ width:24px; display:inline-block; text-align:center; }
-    footer{ position:absolute; bottom:16px; left:0; right:0; font-size:.9rem; color:#ddd; text-shadow:1px 1px 3px #000; }
+    .features h2 {
+      margin:0 0 8px;
+      font-size:1.4rem;
+    }
+    .features p {
+      margin:10px 0;
+      line-height:1.45;
+    }
+    .bullets {
+      margin:10px 0;
+      padding-left:0;
+      list-style:none;
+    }
+    .bullets li {
+      margin:8px 0;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .emoji {
+      width:24px;
+      display:inline-block;
+      text-align:center;
+    }
+    footer {
+      font-size:.9rem;
+      color:#ddd;
+      text-shadow:1px 1px 3px #000;
+      margin-top:auto;
+    }
   </style>
 </head>
 <body>
